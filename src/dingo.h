@@ -19,7 +19,7 @@ extern "C"
 {
   ROBOT_MODULE_API void MC_RTC_ROBOT_MODULE(std::vector<std::string> & names)
   {
-    names = {"Dingo"};
+    names = {"dingo"};
   }
   ROBOT_MODULE_API void destroy(mc_rbdyn::RobotModule * ptr)
   {
@@ -27,14 +27,14 @@ extern "C"
   }
   ROBOT_MODULE_API mc_rbdyn::RobotModule * create(const std::string & n)
   {
-    ROBOT_MODULE_CHECK_VERSION("Dingo")
-    if(n == "Dingo")
+    ROBOT_MODULE_CHECK_VERSION("dingo")
+    if(n == "dingo")
     {
       return new mc_robots::DingoRobotModule();
     }
     else
     {
-      mc_rtc::log::error("Dingo module Cannot create an object of type {}", n);
+      mc_rtc::log::error("dingo module Cannot create an object of type {}", n);
       return nullptr;
     }
   }

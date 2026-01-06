@@ -1,5 +1,5 @@
 if(TARGET dingo)
-  set(ROBOT_MODULE_PARAMS "\"Dingo\"")
+  set(ROBOT_MODULE_PARAMS "\"dingo\"")
   configure_file("${CMAKE_CURRENT_SOURCE_DIR}/loader.in.cpp" "${CMAKE_CURRENT_BINARY_DIR}/mc_dingo/loader.cpp")
   add_executable(loader_dingo "${CMAKE_CURRENT_BINARY_DIR}/mc_dingo/loader.cpp")
   target_link_libraries(loader_dingo PUBLIC mc_rtc::mc_rbdyn)

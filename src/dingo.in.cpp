@@ -33,9 +33,8 @@ DingoRobotModule::DingoRobotModule()
       size_t off = file.filename().string().rfind("-ch.txt");
       if (off != std::string::npos) {
         std::string name = file.filename().string();
-        name.replace(off, 7, "");
-        _convexHull[name + "_link"] = std::pair<std::string, std::string>(
-              name + "_link", file.string());
+        _convexHull[name] = std::pair<std::string, std::string>(
+              name, file.string());
       }
     }
   }
