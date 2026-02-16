@@ -16,11 +16,15 @@ static const std::string MC_DINGO_DESCRIPTION_PATH =
 namespace mc_robots {
 
 DingoRobotModule::DingoRobotModule()
-    : mc_rbdyn::RobotModule(MC_DINGO_DESCRIPTION_PATH, "dingo") {
+ : mc_rbdyn::RobotModule(MC_DINGO_DESCRIPTION_PATH, "dingo", MC_DINGO_DESCRIPTION_PATH + "/urdf/dingo.urdf") {
   // True if the robot has a fixed base, false otherwise
   bool fixed = false;
   // Makes all the basic initialization that can be done from an URDF file
   init(rbd::parsers::from_urdf_file(urdf_path, fixed));
+
+  // Automatically load rsdf
+  std::string rsdfPath = path + "/rsdf/" + name + "/";
+
   // Automatically load the convex hulls associated to each body
   std::string convexPath = path + "/convex/" + name + "/";
   bfs::path p(convexPath);
