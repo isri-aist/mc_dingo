@@ -1,19 +1,14 @@
 #include "dingo.h"
 
+#include <mc_dingo/config.h>
 #include <RBDyn/parsers/urdf.h>
 
-namespace {
-
-// This is set by CMake, see CMakeLists.txt
-static const std::string MC_DINGO_DESCRIPTION_PATH =
-    "@DINGO_DESCRIPTION_PATH@";
-
-} // namespace
-
-namespace mc_robots {
+namespace mc_robots
+{
 
 DingoRobotModule::DingoRobotModule()
- : mc_rbdyn::RobotModule(MC_DINGO_DESCRIPTION_PATH, "dingo") {
+: mc_rbdyn::RobotModule(DINGO_DESCRIPTION_PATH, "dingo", std::string(DINGO_URDF_DIR) + "/dingo.urdf")
+{
   // True if the robot has a fixed base, false otherwise
   bool fixed = false;
 
@@ -21,8 +16,8 @@ DingoRobotModule::DingoRobotModule()
   init(rbd::parsers::from_urdf_file(urdf_path, fixed));
 
   // Automatically load rsdf
-  rsdf_dir = path + "/rsdf/" + name ;
-  
+  rsdf_dir = path + "/rsdf/" + name;
+
   // Define a minimal set of self-collisions
   _minimalSelfCollisions = {};
   _commonSelfCollisions = _minimalSelfCollisions;
